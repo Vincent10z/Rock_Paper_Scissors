@@ -27,18 +27,13 @@ function getComputerChoice(){
 }
 
 function getPlayerChoice(){
-
-    let playerSelection = '';
-
-    while(playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissor')
-    {   
-        playerSelection = prompt("Please select your choice of Rock, Paper, or Scissor: ");
-        playerSelection = playerSelection.toLowerCase()
-
-    }
     
-    
-    
+
+    let initialSelection = prompt("Please select your choice of Rock, Paper, or Scissor: ");
+
+    playerSelection = initialSelection.toLowerCase();
+
+
 
     return playerSelection;
 
@@ -114,10 +109,13 @@ function game(){
     }
 
     if(playerCount > computerCount){
-        console.log("Player wins! You won " + playerCount + " times, while computer won " + computerCount + " times");
+        console.log("Player wins! You won " + playerCount + " times, while computer won " + computerCount + " times :)");
+    }
+    else if(computerCount > playerCount){
+        console.log("Computer wins! You won " + playerCount + " times, while computer won " + computerCount + " times :(");
     }
     else{
-        console.log("Computer wins! You won " + playerCount + " times, while computer won " + computerCount + " times");
+        console.log("It's a Tie! You won " + playerCount + " times, while computer won " + computerCount + " times");
     }
 
 }
