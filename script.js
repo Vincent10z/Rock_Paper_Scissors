@@ -12,7 +12,6 @@ function getComputerChoice(){
 
     if(randNum === 0){
         computerSelection = 'rock';
-
     }
     else if(randNum === 1){
         computerSelection = 'paper';
@@ -23,9 +22,6 @@ function getComputerChoice(){
     else{
         return 0;
     }
-
-    console.log(randNum);
-    console.log(computerSelection);
 
     return computerSelection;
 }
@@ -42,8 +38,6 @@ function getPlayerChoice(){
     //     return 1;
     // }
 
-    
-    console.log(playerSelection);
 
 
     return playerSelection;
@@ -91,12 +85,42 @@ function playRound(playerSelection, computerSelection){
             return whoWon;
         }
     }
-  
+}
 
+function game(){
+
+    let playerSelection = getPlayerChoice();
+    let playerCount = 0;
+    let computerCount = 0;
+
+    for(let i = 0; i < 5; i++){
+
+        let computerSelection = getComputerChoice();
+
+        let result = playRound(playerSelection, computerSelection);
+        console.log(result);
+
+        let extract = result.substring(4, 7);
+
+        if(extract === 'Tie'){
+            continue;
+        }
+        else if(extract === 'Win'){
+            playerCount++;
+        }
+        else{
+            computerCount++;
+        }
+    }
+
+    if(playerCount > computerCount){
+        console.log("Player wins! You won " + playerCount + " times, while computer won " + computerCount + " times");
+    }
+    else{
+        console.log("Computer wins! You won " + playerCount + " times, while computer won " + computerCount + " times");
+    }
 
 }
 
-let computerSelection = getComputerChoice();
-let playerSelection = getPlayerChoice();
-let whoWon = playRound(playerSelection, computerSelection);
-console.log(whoWon);
+
+game();
