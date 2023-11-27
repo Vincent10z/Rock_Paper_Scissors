@@ -28,17 +28,15 @@ function getComputerChoice(){
 
 function getPlayerChoice(){
 
-    let playerSelection = prompt("Please select your choice of Rock, Paper, or Scissor: ");
+    let playerSelection = '';
 
-    playerSelection = playerSelection.toLowerCase()
-
-
-    // if(playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissor'){
-    //     console.log("Please Enter a valid selection");
-    //     return 1;
-    // }
-
-
+    do
+    {
+        playerSelection = prompt("Please select your choice of Rock, Paper, or Scissor: ");
+        playerSelection = playerSelection.toLowerCase()
+    }
+    while(playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissor')
+    
 
     return playerSelection;
 
