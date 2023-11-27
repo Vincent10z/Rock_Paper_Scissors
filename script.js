@@ -30,12 +30,14 @@ function getPlayerChoice(){
 
     let playerSelection = '';
 
-    do
-    {
+    while(playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissor')
+    {   
         playerSelection = prompt("Please select your choice of Rock, Paper, or Scissor: ");
         playerSelection = playerSelection.toLowerCase()
+
     }
-    while(playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissor')
+    
+    
     
 
     return playerSelection;
