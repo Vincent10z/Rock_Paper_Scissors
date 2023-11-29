@@ -1,23 +1,31 @@
+const ROCK = 0;
+const PAPER = 1;
+const SCISSOR = 2;
+const WIN = 1;
+const LOSE = - 1;
+const TIE = 0;
+
 function getComputerChoice(){
 
     let randNum = 0;
-    let computerSelection = '';
-    
+    let computerSelection = [2];
+
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
       }
 
     randNum = getRandomInt(3);
+    console.log(randNum);
 
     if(randNum === 0){
-        computerSelection = 'rock';
+        computerSelection[0] = ROCK;
     }
     else if(randNum === 1){
-        computerSelection = 'paper';
+        computerSelection[0] = PAPER;
     }
     else if(randNum === 2){
-        computerSelection = 'scissor';
+        computerSelection[0] = SCISSOR;
     }
     else{
         return 0;
@@ -30,10 +38,25 @@ function getPlayerChoice(){
     
 
     let initialSelection = prompt("Please select your choice of Rock, Paper, or Scissor: ");
+    
+    initialSelection.toLowerCase();
+    
+    let playerSelection = [];
 
-    playerSelection = initialSelection.toLowerCase();
+    if(initialSelection === 'rock'){
+        playerSelection[0] = ROCK;
+    }
+    else if(initialSelection === 'paper'){
+        playerSelection[0] = PAPER;
+    }
+    else if(initialSelection === 'scissor'){
+        playerSelection[0] = SCISSOR;
+    }
+    else{
+        return 0;
+    }
 
-
+    console.log(playerSelection[0]);
 
     return playerSelection;
 
@@ -43,68 +66,75 @@ function playRound(playerSelection, computerSelection){
 
     let whoWon = '';
 
-    if(playerSelection === computerSelection)
+    if(playerSelection[0] === computerSelection[0])
     {
         whoWon = "You Tie!";
-        return whoWon;
+        console.log(whoWon);
+        return TIE;
     }
-    else if(playerSelection === 'rock'){
-        if(computerSelection === 'paper'){
+    else if(playerSelection[0] === ROCK ){
+        if(computerSelection[0] === PAPER){
             whoWon = "You Lose! Paper beats Rock";
-            return whoWon;
+            console.log(whoWon);
+            return LOSE;
         }
-        if(computerSelection === 'scissor'){
+        if(computerSelection[0] === SCISSOR){
             whoWon = "You Win! Rock beats Scissor";
-            return whoWon;
+            console.log(whoWon);
+            return WIN;
         }
     }
-    else if(playerSelection === 'paper'){
+    else if(playerSelection[0] === PAPER){
 
-        if(computerSelection === 'rock'){
+        if(computerSelection[0] === ROCK){
             whoWon = "You Win! Paper beats Rock";
-            return whoWon;
+            console.log(whoWon);
+            return WIN;
         }
-        if(computerSelection === 'scissor'){
+        if(computerSelection[0] === SCISSOR){
             whoWon = "You Lose! Scissor beats Paper";
-            return whoWon;
+            console.log(whoWon);
+            return LOSE;
         }
     }
-    else if(playerSelection === 'scissor'){
+    else if(playerSelection[0] === SCISSOR){
 
-        if(computerSelection === 'rock'){
+        if(computerSelection[0] === ROCK){
             whoWon = "You Lose! Rock beats Scissor";
-            return whoWon;
+            console.log(whoWon);
+            return LOSE;
         }
-        if(computerSelection === 'paper'){
+        if(computerSelection[0] === PAPER){
             whoWon = "You Win! Scissor beats Paper";
-            return whoWon;
+            console.log(whoWon);
+            return WIN;
         }
     }
 }
 
 function game(){
 
-    let playerSelection = getPlayerChoice();
     let playerCount = 0;
     let computerCount = 0;
 
     for(let i = 0; i < 5; i++){
 
+        let playerSelection = getPlayerChoice();
         let computerSelection = getComputerChoice();
 
         let result = playRound(playerSelection, computerSelection);
-        console.log(result);
 
-        let extract = result.substring(4, 7);
-
-        if(extract === 'Tie'){
+        if(result === TIE){
             continue;
         }
-        else if(extract === 'Win'){
-            playerCount++;
+        else if(result === WIN){
+            playerCount += WIN;
+        }
+        else if(result === LOSE){
+            computerCount += WIN;
         }
         else{
-            computerCount++;
+            return 'ERROR';
         }
     }
 
