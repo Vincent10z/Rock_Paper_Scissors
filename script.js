@@ -40,6 +40,10 @@ function getPlayerChoice(){
     let initialSelection = prompt("Please select your choice of Rock, Paper, or Scissor: ");
     
     initialSelection.toLowerCase();
+
+    // if(initialSelection !== 'rock' || initialSelection !== 'paper' || initialSelection !== 'scissor'){
+    //     return "Error with user input!";
+    // }
     
     let playerSelection = [];
 
