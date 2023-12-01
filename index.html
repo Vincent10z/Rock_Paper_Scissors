@@ -4,9 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="script.js"></script>
+    
 </head>
 <body>
-    
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissor">Scissor</button>
+    <div id="display">Result Displayed Here: </div>
+    <div id="result">Player Result: </div>
+    <div id="result2">Computer Result: </div>
+
+    <script src="script.js"></script>
+    <script>
+        const div = document.querySelector('div');
+
+        let playerScore = 0;
+        let computerScore = 0;
+
+        
+
+            document.getElementById("rock").addEventListener("click", function () {
+            let playerSelection = [];
+            playerSelection[0] = ROCK;
+            
+            let computerSelection = getComputerChoice();
+
+            const divText = document.createElement('div');
+            
+            let result = playRound(playerSelection, computerSelection);
+
+            if(result === -1){
+                computerScore++;
+                displayResult(playerScore, computerScore);
+
+            }else if(result === 0){
+                displayResult(playerScore, computerScore);
+
+            }else{
+                playerScore++;
+                displayResult(playerScore, computerScore);
+            }
+
+            if (playerScore === 5){
+                whoWon = "You win the match!";
+                let Result = document.getElementById("display");
+                Result.textContent = whoWon;
+                playerScore =0;
+                computerScore=0;
+                displayResult(playerScore, computerScore);
+            
+            }
+            if(computerScore === 5){
+                whoWon = "You lose the match!";
+                let Result = document.getElementById("display");
+                Result.textContent = whoWon;
+                playerScore =0;
+                computerScore=0;
+                displayResult(playerScore, computerScore);
+            }
+
+            
+        });
+
+        document.getElementById("paper").addEventListener("click", function () {
+            let playerSelection = [];
+            playerSelection[0] = PAPER;
+
+            const divText = document.createElement('div');
+
+            let computerSelection = getComputerChoice();
+
+            let result = playRound(playerSelection, computerSelection);
+            if(result === -1){
+                computerScore++;
+                displayResult(playerScore, computerScore);
+                
+
+            }else if(result === 0){
+                displayResult(playerScore, computerScore);
+
+            }else{
+                playerScore++;
+                displayResult(playerScore, computerScore);
+            }
+
+            if (playerScore === 5){
+                whoWon = "You win the match!";
+                let Result = document.getElementById("display");
+                Result.textContent = whoWon;
+                playerScore =0;
+                computerScore=0;
+                displayResult(playerScore, computerScore);
+            
+            }
+            if(computerScore === 5){
+                whoWon = "You lose the match!";
+                let Result = document.getElementById("display");
+                Result.textContent = whoWon;
+                playerScore =0;
+                computerScore=0;
+                displayResult(playerScore, computerScore);
+            }
+        });
+
+        document.getElementById("scissor").addEventListener("click", function () {
+            let playerSelection = [];
+            playerSelection[0] = SCISSOR;
+
+            const divText = document.createElement('div');
+
+            let computerSelection = getComputerChoice();
+
+            let result = playRound(playerSelection, computerSelection);
+            if(result === -1){
+                computerScore++;
+                displayResult(playerScore, computerScore);
+                
+
+            }else if(result === 0){
+                displayResult(playerScore, computerScore);
+
+            }else{
+                
+                playerScore++;
+                displayResult(playerScore, computerScore);
+            }
+
+            if (playerScore === 5){
+                whoWon = "You win the match!";
+                let Result = document.getElementById("display");
+                Result.textContent = whoWon;
+                playerScore =0;
+                computerScore=0;
+                displayResult(playerScore, computerScore);
+            
+            }
+            if(computerScore === 5){
+                whoWon = "You lose the match!";
+                let Result = document.getElementById("display");
+                Result.textContent = whoWon;
+                playerScore =0;
+                computerScore=0;
+                displayResult(playerScore, computerScore);
+            }
+
+
+        });
+
+
+        function displayResult(result, result2, display) {
+        // Assuming there is a div with the id "result" in your HTML
+        let playerResult = document.getElementById("result");
+        let computerResult = document.getElementById("result2")
+        playerResult.textContent = result;
+        computerResult.textContent = result2;
+
+        
+}
+        
+
+
+    </script>
 </body>
 </html>

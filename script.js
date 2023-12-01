@@ -5,6 +5,8 @@ const WIN = 1;
 const LOSE = - 1;
 const TIE = 0;
 
+
+
 function getComputerChoice(){
 
     let randNum = 0;
@@ -69,22 +71,28 @@ function getPlayerChoice(){
 function playRound(playerSelection, computerSelection){
 
     let whoWon = '';
+    let finalResult = [];
 
     if(playerSelection[0] === computerSelection[0])
     {
         whoWon = "You Tie!";
-        console.log(whoWon);
+        let Result = document.getElementById("display");
+        Result.textContent = whoWon;
+
         return TIE;
     }
-    else if(playerSelection[0] === ROCK ){
+
+    if(playerSelection[0] === ROCK ){
         if(computerSelection[0] === PAPER){
             whoWon = "You Lose! Paper beats Rock";
-            console.log(whoWon);
+            let Result = document.getElementById("display");
+            Result.textContent = whoWon;
             return LOSE;
         }
-        if(computerSelection[0] === SCISSOR){
+       else if(computerSelection[0] === SCISSOR){
             whoWon = "You Win! Rock beats Scissor";
-            console.log(whoWon);
+            let Result = document.getElementById("display");
+            Result.textContent = whoWon;
             return WIN;
         }
     }
@@ -92,12 +100,14 @@ function playRound(playerSelection, computerSelection){
 
         if(computerSelection[0] === ROCK){
             whoWon = "You Win! Paper beats Rock";
-            console.log(whoWon);
+            let Result = document.getElementById("display");
+            Result.textContent = whoWon;
             return WIN;
         }
-        if(computerSelection[0] === SCISSOR){
+        else if(computerSelection[0] === SCISSOR){
             whoWon = "You Lose! Scissor beats Paper";
-            console.log(whoWon);
+            let Result = document.getElementById("display");
+            Result.textContent = whoWon;
             return LOSE;
         }
     }
@@ -105,42 +115,64 @@ function playRound(playerSelection, computerSelection){
 
         if(computerSelection[0] === ROCK){
             whoWon = "You Lose! Rock beats Scissor";
-            console.log(whoWon);
+            let Result = document.getElementById("display");
+            Result.textContent = whoWon;
             return LOSE;
         }
-        if(computerSelection[0] === PAPER){
+        else if(computerSelection[0] === PAPER){
             whoWon = "You Win! Scissor beats Paper";
-            console.log(whoWon);
+            let Result = document.getElementById("display");
+            Result.textContent = whoWon;
             return WIN;
         }
     }
 }
+
+
 
 function game(){
 
     let playerCount = 0;
     let computerCount = 0;
 
-    for(let i = 0; i < 5; i++){
+    let playerSelection = getPlayerChoice();
+    let computerSelection = getComputerChoice();
 
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
 
-        let result = playRound(playerSelection, computerSelection);
-
-        if(result === TIE){
-            continue;
-        }
-        else if(result === WIN){
-            playerCount += WIN;
-        }
-        else if(result === LOSE){
-            computerCount += WIN;
-        }
-        else{
-            return 'ERROR';
-        }
+    if(result === TIE){
+        playerCount += 0;
     }
+    else if(result === WIN){
+        playerCount += WIN;
+    }
+    else if(result === LOSE){
+        computerCount += WIN;
+    }
+    else{
+        return 'ERROR';
+    }
+
+    // for(let i = 0; i < 5; i++){
+
+    //     let playerSelection = getPlayerChoice();
+    //     let computerSelection = getComputerChoice();
+
+    //     let result = playRound(playerSelection, computerSelection);
+
+    //     if(result === TIE){
+    //         continue;
+    //     }
+    //     else if(result === WIN){
+    //         playerCount += WIN;
+    //     }
+    //     else if(result === LOSE){
+    //         computerCount += WIN;
+    //     }
+    //     else{
+    //         return 'ERROR';
+    //     }
+    // }
 
     if(playerCount > computerCount){
         console.log("Player wins! You won " + playerCount + " times, while computer won " + computerCount + " times :)");
@@ -153,6 +185,3 @@ function game(){
     }
 
 }
-
-
-game();
