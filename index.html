@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
     
 </head>
 <body>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissor">Scissor</button>
-    <div id="display">Result Displayed Here: </div>
-    <div id="result">Player Result: </div>
-    <div id="result2">Computer Result: </div>
-
+<div class="main-container">
+    <div class="button-container">
+        <div class="btn-container-text">Rock Paper Scissors!</div>
+        <div class="btn-items">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissor">Scissor</button>
+        </div>
+    </div>
+    <div class="result-container">
+        <div id="display">Result Displayed Here: </div>
+        <div id="result">Player Result: </div>
+        <div id="result2">Computer Result: </div>
+    </div>
+</div>
+    
     <script src="script.js"></script>
     <script>
         const div = document.querySelector('div');
@@ -156,8 +166,8 @@
         // Assuming there is a div with the id "result" in your HTML
         let playerResult = document.getElementById("result");
         let computerResult = document.getElementById("result2")
-        playerResult.textContent = result;
-        computerResult.textContent = result2;
+        playerResult.textContent = "Player Score: " + result;
+        computerResult.textContent = "Computer Score: " + result2;
 
         
 }

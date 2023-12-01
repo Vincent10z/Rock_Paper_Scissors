@@ -1,0 +1,27 @@
+body{
+    background-color: lightblue;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.button-container{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.result-container{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
